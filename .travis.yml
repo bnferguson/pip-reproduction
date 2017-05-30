@@ -1,0 +1,19 @@
+language: python
+matrix:
+  include:
+    - os: linux
+      python: 2.7
+      sudo: true
+    - os: osx
+      language: objective-c
+      osx_image: xcode8.3
+before_install:
+  - if [[ "${OS_NAME}" == "osx" ]]; then brew update; fi
+  - if [[ "${OS_NAME}" == "osx" ]]; then brew install upx; fi
+  - if [[ "${OS_NAME}" == "linux" ]]; then sudo apt-get install -y upx; fi
+  - "pip install -U pip"
+install:
+  - pip install -r requirements/requirements.txt
+  - pip install -r requirements/dev-requirements.txt
+script:
+  true

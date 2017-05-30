@@ -1,0 +1,4 @@
+pyinstaller
+pep8
+nose
+mock
